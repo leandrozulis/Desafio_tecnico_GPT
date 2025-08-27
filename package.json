@@ -2,8 +2,11 @@
   "name": "desafio_tecnico_gpt",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsup src/*"
   },
   "keywords": [],
   "author": "",
