@@ -1,11 +1,16 @@
-version: '4.6.0'
+version: '3.9'
 
-services: 
-    dtgpt:
-      image: bitnami/postgresql
-      ports:
-        5432:5432
-      enviroment:
-        DB_DATABASE: desafiotec
-        DB_USERNAME: desafio
-        DB_PASSWORD: tec
+services:
+  dtgpt:
+    image: bitnami/postgresql:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_DATABASE=desafiotec
+      - POSTGRESQL_USERNAME=desafio
+      - POSTGRESQL_PASSWORD=tec
+    volumes:
+      - postgres_data:/bitnami/postgresql
+
+volumes:
+  postgres_data:

@@ -13,12 +13,12 @@ export class ControllerUser {
 
     const { name, email, password }: UserSchema = userSchema.parse(req.body)
 
-    const user = await this.useCaseCreateUser.execute({
+    const { user } = await this.useCaseCreateUser.execute({
       name, email, password
     })
 
     return reply.status(201).send({
-      user: ViewUser.createUser
+      user: ViewUser.createUser(user)
     })
 
   }
