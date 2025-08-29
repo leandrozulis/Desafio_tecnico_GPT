@@ -1,4 +1,4 @@
-import { User } from "../../../application/entities/User";
+import { User } from "../../../../application/entities/User";
 
 export class ViewUser {
 

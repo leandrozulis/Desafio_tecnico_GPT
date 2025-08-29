@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { UseCaseCreateUser } from "../../application/use-cases/create-user.usecase";
+import { UseCaseCreateUser } from "../../../application/use-cases/create-user.usecase";
 import { UserSchema, userSchema } from "./DTO/user.dto";
 import { ViewUser } from "./View/user.view";
 
