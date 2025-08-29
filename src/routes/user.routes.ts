@@ -1,7 +1,8 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { ControllerUser } from "../modules/controllers/user.controller";
+import { ControllerUser } from "../modules/controllers/User/user.controller";
 import { RepositoryPrismaUser } from "../config/prisma/repository/user-prisma.repository";
 import { UseCaseCreateUser } from "../application/use-cases/create-user.usecase";
+import { verifyJWT } from "../modules/middleware/verifyAuthenticate";
 
 export function userRoutes(app: FastifyInstance) {
 
@@ -12,4 +13,10 @@ export function userRoutes(app: FastifyInstance) {
   app.post('/create', async (req: FastifyRequest, reply: FastifyReply) => {
     await controllerUser.create(req, reply)
   })
+
+  // app.get('/teste', { onRequest: [verifyJWT] }, async (req: FastifyRequest, reply: FastifyReply) => {
+  //   return reply.status(200).send({
+  //     deu: 'certo'
+  //   })
+  // })
 }

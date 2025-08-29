@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:dev": "tsx src/server.ts",
+    "start:dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "build": "tsup src/*"
   },
@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@fastify/jwt": "^10.0.0",
     "@prisma/client": "^6.15.0",
     "bcrypt": "^6.0.0",
     "dotenv": "^17.2.1",
