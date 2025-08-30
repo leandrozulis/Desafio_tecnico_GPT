@@ -21,4 +21,25 @@ model User {
   password  String
   createdAt DateTime  @default(now())
   updatedAt DateTime?
+
+  zipCode   ZipCode? @relation(fields: [zipCodeId], references: [id])
+  zipCodeId String?
+}
+
+model ZipCode {
+  id          String  @id @default(uuid())
+  cep         String?
+  logradouro  String?
+  complemento String?
+  unidade     String?
+  bairro      String?
+  localidade  String?
+  uf          String?
+  estado      String?
+  regiao      String?
+  ibge        String?
+  gia         String?
+  ddd         String?
+  siafi       String?
+  User        User[]
 }

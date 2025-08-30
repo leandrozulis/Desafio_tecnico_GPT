@@ -9,8 +9,8 @@ export function authenticateRoute(app: FastifyInstance) {
   const useCaseAuth = new UseCaseAuthenticate(repositoryUser)
   const controllerAuth = new ControllerAuthenticate(useCaseAuth)
 
-  app.post('/login', (req: FastifyRequest, reply: FastifyReply) => {
-    controllerAuth.login(req, reply)
+  app.post('/login', async (req: FastifyRequest, reply: FastifyReply) => {
+    await controllerAuth.login(req, reply)
   })
 
 }

@@ -13,10 +13,4 @@ export function userRoutes(app: FastifyInstance) {
   app.post('/create', async (req: FastifyRequest, reply: FastifyReply) => {
     await controllerUser.create(req, reply)
   })
-
-  // app.get('/teste', { onRequest: [verifyJWT] }, async (req: FastifyRequest, reply: FastifyReply) => {
-  //   return reply.status(200).send({
-  //     deu: 'certo'
-  //   })
-  // })
 }
