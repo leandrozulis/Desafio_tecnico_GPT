@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto"
 import { Replace } from "../../Helpers/Replace"
 
-interface SchemaUser {
+export interface SchemaUser {
   name: string
   email: string
   password: string

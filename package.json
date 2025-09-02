@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
-    "build": "tsup src/*"
+    "build": "tsup src/*",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +26,11 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
+    "jest": "^30.1.2",
     "prisma": "^6.15.0",
+    "ts-jest": "^29.4.1",
     "zod": "^4.1.4"
   }
 }
