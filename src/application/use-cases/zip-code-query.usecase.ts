@@ -1,9 +1,10 @@
-import { RepositoryUser } from "../repositories/User.repository";
-import { ErrorZipCodeIncorrect } from "./Errors/ZipCodeIncorrect.error"
+import { HttpZipCodeQuery } from "../../modules/middleware/zip-code-query";
+import { ZipCode } from "../entities/ZipCode";
+import { RepositoryZipCode } from "../repositories/ZipCode.repository";
+import { ErrorZipCodeIncorrect } from "./Errors/ZipCodeIncorrect.error";
 
 interface zipCodeQueryRequest {
-  cep: string,
-  token: string
+  cep: string
 }
 
 interface zipCodeQueryResponse {
@@ -13,7 +14,7 @@ interface zipCodeQueryResponse {
 export class UseCaseZipCodeQuery {
 
   constructor(
-    private repUser: RepositoryUser
+    private repZipCode: RepositoryZipCode
   ) { }
 
   async execute({ cep }: zipCodeQueryRequest): Promise<zipCodeQueryResponse> {

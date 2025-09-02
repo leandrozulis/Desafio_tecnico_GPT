@@ -44,4 +44,18 @@ export class RepositoryPrismaUser implements RepositoryUser {
     return MappersUser.toDomain(findEmail)
   }
 
+  async update(id: string, zipCode: string): Promise<void> {
+
+    console.log(id, zipCode)
+
+    await prisma.user.update({
+      where: { id },
+      data: {
+        zipCode: {
+          connect: { id: zipCode }
+        }
+      }
+    })
+  }
+
 }

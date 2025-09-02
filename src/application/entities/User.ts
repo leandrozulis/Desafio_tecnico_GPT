@@ -7,6 +7,7 @@ interface SchemaUser {
   password: string
   createdAt: Date
   updatedAt: Date
+  zipCodeId?: string
 }
 
 export class User {
@@ -19,16 +20,18 @@ export class User {
       SchemaUser,
       {
         createdAt?: Date,
-        updatedAt?: Date | undefined
+        updatedAt?: Date | undefined,
+        zipCodeId?: string | null
       }
     >,
     id?: string
   ) {
-    this._id = randomUUID()
+    this._id = id ?? randomUUID()
     this.props = {
       ...props,
       createdAt: new Date(),
-      updatedAt: new Date ?? props.updatedAt
+      updatedAt: new Date ?? props.updatedAt,
+      zipCodeId: props.zipCodeId ?? undefined
     }
   }
 
@@ -56,6 +59,10 @@ export class User {
     return this.props.updatedAt
   }
 
+  get ZipCodeId(): string | undefined | null {
+    return this.props.zipCodeId
+  }
+
   set Name(name: string) {
     this.props.name = name
   }
@@ -66,5 +73,9 @@ export class User {
 
   set Password(password: string) {
     this.props.password = password
+  }
+
+  set ZipCodeId(zipCodeId: string) {
+    this.props.zipCodeId = zipCodeId
   }
 }

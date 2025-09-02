@@ -11,15 +11,23 @@ export class ControllerUser {
 
   async create(req: FastifyRequest, reply: FastifyReply) {
 
-    const { name, email, password }: UserSchema = userSchema.parse(req.body)
+    try {
+      const { name, email, password }: UserSchema = userSchema.parse(req.body)
 
-    const { user } = await this.useCaseCreateUser.execute({
-      name, email, password
-    })
+      const { user } = await this.useCaseCreateUser.execute({
+        name, email, password
+      })
 
-    return reply.status(201).send({
-      user: ViewUser.createUser(user)
-    })
+      return reply.status(201).send({
+        user: ViewUser.createUser(user)
+      })
+    } catch (error) {
+      return reply.status(500).send({
+        message: 'Internal Error, consult your provider for more details!',
+        err: error
+      })
+    }
+
 
   }
 

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { env } from "../../../../.env";
+import { env } from "../../.env";
 
 interface zipCodeRequest {
   zipCode: string
@@ -11,7 +11,7 @@ export class HttpZipCodeQuery {
 
     const { data } = await axios.get(env.viacep + zipCode + '/json/');
     const response = data;
-    return response;
+    return { zipCode: data };
 
   }
 

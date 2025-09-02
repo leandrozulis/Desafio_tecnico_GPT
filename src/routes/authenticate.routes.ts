@@ -5,8 +5,8 @@ import { UseCaseAuthenticate } from "../application/use-cases/authenticate.useca
 
 export function authenticateRoute(app: FastifyInstance) {
 
-  const repositoryUser = new RepositoryPrismaUser()
-  const useCaseAuth = new UseCaseAuthenticate(repositoryUser)
+  const userPrismaRepository = new RepositoryPrismaUser()
+  const useCaseAuth = new UseCaseAuthenticate(userPrismaRepository)
   const controllerAuth = new ControllerAuthenticate(useCaseAuth)
 
   app.post('/login', async (req: FastifyRequest, reply: FastifyReply) => {

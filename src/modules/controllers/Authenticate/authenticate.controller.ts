@@ -10,21 +10,27 @@ export class ControllerAuthenticate {
 
   async login(req: FastifyRequest, reply: FastifyReply) {
 
-    const { email, password }: AuthenticateSchema = authenticateSchema.parse(req.body)
+    try {
+      const { email, password }: AuthenticateSchema = authenticateSchema.parse(req.body)
 
-    const { user } = await this.useCaseAuthenticate.execute({
-      email, password
-    })
+      const { user } = await this.useCaseAuthenticate.execute({
+        email, password
+      })
 
-    const signedToken = await reply.jwtSign({
-      id: user.Id,
-      name: user.Name,
-      email: user.Email
-    })
+      const signedToken = await reply.jwtSign({
+        id: user.Id,
+        name: user.Name,
+        email: user.Email
+      })
 
-    return reply.status(200).send(
-      ViewAuthenticate.authenticate(signedToken)
-    )
-
+      return reply.status(200).send(
+        ViewAuthenticate.authenticate(signedToken)
+      )
+    } catch (error) {
+      return reply.status(500).send({
+        message: 'Internal Error, consult your provider for more details!',
+        err: error
+      })
+    }
   }
 }

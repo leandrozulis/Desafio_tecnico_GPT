@@ -4,5 +4,5 @@ export interface RepositoryUser {
   create(user: User): Promise<void>
   getById(id: string): Promise<User | null>
   getByEmail(email: string): Promise<User | null>
-  update(id: string, zipCode: object): Promise<User | null>
+  update(id: string, zipCode: string): Promise<void>
 }

@@ -1,8 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { ControllerUser } from "../modules/controllers/User/user.controller";
-import { RepositoryPrismaUser } from "../config/prisma/repository/user-prisma.repository";
 import { UseCaseCreateUser } from "../application/use-cases/create-user.usecase";
-import { verifyJWT } from "../modules/middleware/verifyAuthenticate";
+import { RepositoryPrismaUser } from "../config/prisma/repository/user-prisma.repository";
+import { ControllerUser } from "../modules/controllers/User/user.controller";
 
 export function userRoutes(app: FastifyInstance) {
 
